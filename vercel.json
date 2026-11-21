@@ -5,10 +5,10 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api"
+      "destination": "/api/index.py"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!assets/|icons\\.svg|favicon\\.svg|favicon\\.ico|api/|.*\\.[a-zA-Z0-9]+$).*)",
       "destination": "/index.html"
     }
   ]
