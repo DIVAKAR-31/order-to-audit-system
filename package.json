@@ -1,0 +1,10 @@
+{
+  "name": "order-to-audit-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Order-to-Audit System for South Indian Snacks Manufacturing (Murukku, Mixture, Chips, Sweets)",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm run preview"
+  }
+}

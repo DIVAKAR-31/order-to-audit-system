@@ -8,7 +8,13 @@ from sqlalchemy.orm import sessionmaker
 # Database URL support:
 # If DATABASE_URL environment variable is provided (e.g. postgresql://user:pass@localhost:5432/order_to_audit)
 # it uses PostgreSQL. Otherwise, defaults to SQLite for immediate zero-config execution.
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./order_to_audit.db")
+# On Vercel serverless, writes to ./ are blocked, so use /tmp/
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    if os.getenv("VERCEL"):
+        DATABASE_URL = "sqlite:////tmp/order_to_audit.db"
+    else:
+        DATABASE_URL = "sqlite:///./order_to_audit.db"
 
 connect_args = {}
 if DATABASE_URL.startswith("sqlite"):
